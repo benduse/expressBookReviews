@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}))
 
-app.use("/customer/auth/*", function auth(req,res,next){
+app.use("/customer/auth/*", function auth(req, res, next){
 //Write the authentication mechanism here
 
 const username = req.body.username;

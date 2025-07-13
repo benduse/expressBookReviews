@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "d90ddf9a-9b94-4c0c-8f94-0ab656d222a4",
+    "name": "Bookstore API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"12345\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["register"]
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"12345\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/customer/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["customer", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get All Books",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000"
+        }
+      }
+    },
+    {
+      "name": "Get Book by ISBN",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/isbn/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["isbn", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get Book by Author",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/author/J.K. Rowling",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["author", "J.K. Rowling"]
+        }
+      }
+    },
+    {
+      "name": "Get Book by Title",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/title/Harry Potter",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["title", "Harry Potter"]
+        }
+      }
+    },
+    {
+      "name": "Get Book Review",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5000/review/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["review", "1"]
+        }
+      }
+    },
+    {
+      "name": "Add Book Review (Auth)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"review\": \"Awesome book!\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/customer/auth/review/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["customer", "auth", "review", "1"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
