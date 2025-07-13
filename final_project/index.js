@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const session = require('express-session')
+const{authenticatedUser} = require('./router/auth_users.js');
 const customer_routes = require('./router/auth_users.js').authenticated;
 const genl_routes = require('./router/general.js').general;
 
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}))
 
 app.use("/customer/auth/*", function auth(req,res,next){
-//Write the authenication mechanism here
+//Write the authentication mechanism here
 
 const username = req.body.username;
 const password = req.body.password;
@@ -19,7 +20,7 @@ if(!username || !password){
     return res.status(400).json({message: "Username or Password Invalid!"});
 }
 //If the user is authenticated jwt is used to sign in
-if(authenticated.authenticatedUser(username,password)){
+if(authenticatedUser(username,password)){
     let accessToken=jwt.sign({
         username:username
     }, 'access', {expiresIn:60*60});
